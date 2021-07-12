@@ -394,7 +394,7 @@ class CmdResult:
     @property
     def stdout_text(self):
         if hasattr(self.stdout, 'decode'):
-            return self.stdout.decode(self.encoding)
+            return self.stdout.decode(self.encoding, errors='replace')
         if isinstance(self.stdout, str):
             return self.stdout
         raise TypeError("Unable to decode stdout into a string-like type")
@@ -402,7 +402,7 @@ class CmdResult:
     @property
     def stderr_text(self):
         if hasattr(self.stderr, 'decode'):
-            return self.stderr.decode(self.encoding)
+            return self.stderr.decode(self.encoding, errors='replace')
         if isinstance(self.stderr, str):
             return self.stderr
         raise TypeError("Unable to decode stderr into a string-like type")
